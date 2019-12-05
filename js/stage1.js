@@ -142,7 +142,6 @@ var stage1State = {
 		game.global.yPlayer = this.player.position.y;
 		
 		
-		//???????[Violation] 'requestAnimationFrame'phaser.min.js:18 
 		game.monsters.forEach(function (item, indice, array) {
 			console.log("IMPRIMIR ARRAY: "+ item, indice);
 			//game.add.sprite(vetorX[indice], vetorY[indice], item);
