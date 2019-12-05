@@ -56,7 +56,7 @@ var stage1State = {
 				var x = col * 50;
 				var y = row * 50;
 				
-				if(tile === 1 || tile === 0 || tile === 2 || tile === 3 || tile === 4){
+				if(true){
 					var grass = this.grass.create(x,y,'grass');
 					
 				} 
@@ -69,7 +69,7 @@ var stage1State = {
 					this.player.animations.add('goLeft',[16,17,18,19,20,21,22,23],12,true);
 					this.player.animations.add('goRight',[24,25,26,27,28,29,30,31],12,true);
 				} 
-				if(tile === 3){
+				if(tile === 3){ //3
 					var position = {
 						x: x + 25,
 						y: y + 25
@@ -164,11 +164,14 @@ var stage1State = {
 		
 
 		
-
-		game.state.start('battle');
 		this.emitter.x = this.coin.position.x;
 		this.emitter.y = this.coin.position.y;
 		this.emitter.start(true,500,null,15);
+		console.log("tempo");
+		game.time.events.add(5000,this.keyD(), this);
+
+		
+	
 		
 		this.sndCoin.play();
 		this.coins++;
