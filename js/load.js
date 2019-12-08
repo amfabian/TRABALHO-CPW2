@@ -28,14 +28,13 @@ var loadState = {
 
 
 
-		game.load.spritesheet('btn_papel', 'buttons/PAPEL-peq.png');
 		game.load.spritesheet('btn_papel1', 'buttons/btn_papel.png');
 		game.load.spritesheet('btn_pedra1', 'buttons/btn_pedra.png');
 		game.load.spritesheet('btn_tesoura1', 'buttons/btn_tesoura.png');
 		game.load.spritesheet('btn_hadouken1', 'buttons/btn_hadouken.png');
 
 
-
+		game.load.spritesheet('btn_papel', 'buttons/PAPEL-peq.png', 110, 128);
 		game.load.spritesheet('btn_pedra', 'buttons/PEDRA-peq.png', 110, 128);
 		game.load.spritesheet('btn_tesoura', 'buttons/TESOURA-peq.png', 110, 128);
 		game.load.spritesheet('btn_hadouken', 'buttons/HADOUKEN-peq.png', 110, 128);

@@ -6,7 +6,7 @@ var stage1State = {
 		this.music.loop = true;
 		this.music.volume = .5;
 		this.music.play();
-
+		//efeito sonoro
 		this.sndCard = game.add.audio('getitem');
 		this.sndCard.volume = .5;
 
@@ -26,7 +26,7 @@ var stage1State = {
 		
 		
 		//CARREGA O CENARIO
-		this.maze = [
+		this.map = [
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 			[0,1,1,1,5,1,1,5,1,1,1,1,1,5,1,1,0],
 			[0,1,3,0,0,0,0,0,0,0,0,0,0,0,3,1,0],
@@ -50,19 +50,21 @@ var stage1State = {
 		this.houses.enableBody = true;
 	
 		this.cardPositions = [];
-		
-		for(var row in this.maze){
-			for(var col in this.maze[row]){
-				var tile = this.maze[row][col];
+		//percorre a matriz carregando a grama, os blocos inferiores, as casas, o jogador e a ~moeda~
+		for(var row in this.map){
+			for(var col in this.map[row]){
+				var tile = this.map[row][col];
 				
 				var x = col * 50;
 				var y = row * 50;
 				
 				if(true){
+					//carrega a grama
 					var grass = this.grass.create(x,y,'grass');
 					
 				} 
 				if(tile === 2){
+					//carrega o player
 					this.player = game.add.sprite(game.global.xPlayer,game.global.yPlayer,'player');
 					
 					game.physics.arcade.enable(this.player);
@@ -71,7 +73,8 @@ var stage1State = {
 					this.player.animations.add('goLeft',[16,17,18,19,20,21,22,23],12,true);
 					this.player.animations.add('goRight',[24,25,26,27,28,29,30,31],12,true);
 				} 
-				if(tile === 3){ //3
+				if(tile === 3){ 
+					//carrega a ~moeda~
 					var position = {
 						x: x + 25,
 						y: y + 25
@@ -79,11 +82,13 @@ var stage1State = {
 					this.cardPositions.push(position);
 				}
 				if(tile === 4){
+					//carrega os blocos, parte inferior do jogo
 					var block = this.blocks.create(x,y,'block');
 					block.body.immovable = true;
 					
 				}
 				if(tile === 5){
+					//carrega as casas
 					var house = this.houses.create(x,y,'house');
 					house.body.immovable = true;
 					
@@ -96,14 +101,15 @@ var stage1State = {
 		txtTitulo.anchor.set(0.5, 0.5);
 
 		
-		
+		//botao para alternar para os cards
 		var button;
 		button = game.add.button(50, 600, 'btn_cards', this.keyA, this, 2, 1, 0);
 		button.anchor.set(0,0.5);
 	
 		
 		
-		//Criar o card 
+		//Criar o card
+		//
 		this.card = {};
 		this.card.position = this.newPosition();
 		this.card = game.add.sprite(this.card.position.x,this.card.position.y,'coin');
@@ -113,8 +119,8 @@ var stage1State = {
 
 		game.physics.arcade.enable(this.card);
 		
-		//coletar moeda
-		this.card = 0;
+		//coletar card
+		this.cards = 0;
 		
 		
 		//controles
@@ -139,14 +145,11 @@ var stage1State = {
 			game.physics.arcade.collide(this.player,this.blocks);
 			game.physics.arcade.collide(this.player,this.houses);
 
-			game.physics.arcade.overlap(this.player,this.card,this.getCard,null,this);
-			//game.physics.arcade.overlap(this.player,this.enemy,this.keyA,null,this);
 
-			//console.log("Player X: "+this.player.position.x);
-			//console.log("Player y: "+this.player.position.y);
 			this.player.body.collideWorldBounds = true;
 
-			
+			game.physics.arcade.overlap(this.player,this.card,this.getCard,null,this);
+
 			game.physics.arcade.overlap(this.player,this.houses,this.keyA,null,this);
 
 			this.movePlayer();
@@ -192,7 +195,7 @@ var stage1State = {
 	
 		
 		this.sndCard.play();
-		
+		this.cards++;
 		
 		
 		this.card.position = this.newPosition();
