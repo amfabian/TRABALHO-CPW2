@@ -7,8 +7,8 @@ var stage1State = {
 		this.music.volume = .5;
 		this.music.play();
 
-		this.sndCoin = game.add.audio('getitem');
-		this.sndCoin.volume = .5;
+		this.sndCard = game.add.audio('getitem');
+		this.sndCard.volume = .5;
 
 		//carrega plano de fundo
 		game.add.sprite(0,0,'bg');
@@ -49,7 +49,7 @@ var stage1State = {
 		this.houses = game.add.group();
 		this.houses.enableBody = true;
 	
-		this.coinPositions = [];
+		this.cardPositions = [];
 		
 		for(var row in this.maze){
 			for(var col in this.maze[row]){
@@ -76,7 +76,7 @@ var stage1State = {
 						x: x + 25,
 						y: y + 25
 					};
-					this.coinPositions.push(position);
+					this.cardPositions.push(position);
 				}
 				if(tile === 4){
 					var block = this.blocks.create(x,y,'block');
@@ -104,17 +104,17 @@ var stage1State = {
 		
 		
 		//Criar o card 
-		this.coin = {};
-		this.coin.position = this.newPosition();
-		this.coin = game.add.sprite(this.coin.position.x,this.coin.position.y,'coin');
-		this.coin.anchor.set(.5);
-		this.coin.animations.add('spin',[0,1,2,3,4,5,6,7,8,9],10,true).play();
-		//this.coin.animations.add('spin',[10],10,true).play();
+		this.card = {};
+		this.card.position = this.newPosition();
+		this.card = game.add.sprite(this.card.position.x,this.card.position.y,'coin');
+		this.card.anchor.set(.5);
+		this.card.animations.add('spin',[0,1,2,3,4,5,6,7,8,9],10,true).play();
+		//this.card.animations.add('spin',[10],10,true).play();
 
-		game.physics.arcade.enable(this.coin);
+		game.physics.arcade.enable(this.card);
 		
 		//coletar moeda
-		this.coins = 0;
+		this.card = 0;
 		
 		
 		//controles
@@ -139,7 +139,7 @@ var stage1State = {
 			game.physics.arcade.collide(this.player,this.blocks);
 			game.physics.arcade.collide(this.player,this.houses);
 
-			game.physics.arcade.overlap(this.player,this.coin,this.getCoin,null,this);
+			game.physics.arcade.overlap(this.player,this.card,this.getCard,null,this);
 			//game.physics.arcade.overlap(this.player,this.enemy,this.keyA,null,this);
 
 			//console.log("Player X: "+this.player.position.x);
@@ -154,7 +154,7 @@ var stage1State = {
 	},
 	
 
-	getCoin: function(){
+	getCard: function(){
 		this.music.stop();
 		game.global.xPlayer = this.player.position.x;
 		game.global.yPlayer = this.player.position.y;
@@ -182,8 +182,8 @@ var stage1State = {
 		
 
 		
-		this.emitter.x = this.coin.position.x;
-		this.emitter.y = this.coin.position.y;
+		this.emitter.x = this.card.position.x;
+		this.emitter.y = this.card.position.y;
 		this.emitter.start(true,500,null,15);
 		console.log("tempo");
 		game.time.events.add(5000,this.keyD(), this);
@@ -191,11 +191,11 @@ var stage1State = {
 		
 	
 		
-		this.sndCoin.play();
-		this.coins++;
+		this.sndCard.play();
 		
 		
-		this.coin.position = this.newPosition();
+		
+		this.card.position = this.newPosition();
 	},
 	
 	
@@ -239,10 +239,10 @@ var stage1State = {
 	},
 	
 	newPosition: function(){
-		var pos = this.coinPositions[Math.floor(Math.random() * this.coinPositions.length)];
+		var pos = this.cardPositions[Math.floor(Math.random() * this.cardPositions.length)];
 		
-		while(this.coin.position === pos){
-			pos = this.coinPositions[Math.floor(Math.random() * this.coinPositions.length)];
+		while(this.card.position === pos){
+			pos = this.cardPositions[Math.floor(Math.random() * this.cardPositions.length)];
 		}
 		
 		return pos;
