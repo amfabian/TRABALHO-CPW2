@@ -27,17 +27,17 @@ var stage1State = {
 		
 		//CARREGA O CENARIO
 		this.maze = [
-			[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
-			[4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4],
-			[4,1,3,0,0,0,0,0,0,0,0,0,0,0,3,1,4],
-			[4,1,0,1,1,0,1,0,1,1,1,0,1,1,0,1,4],
-			[4,1,0,1,3,0,1,3,5,0,1,0,3,1,0,1,4],
-			[4,1,0,0,0,1,1,1,1,0,1,0,1,1,0,1,4],
-			[4,1,0,0,0,0,1,0,2,0,0,0,0,0,0,1,4],
-			[4,1,0,1,3,0,0,0,0,1,0,0,3,1,0,1,4],
-			[4,1,0,1,1,5,1,0,1,1,0,1,1,1,0,1,4],
-			[4,1,3,0,0,0,0,0,3,1,0,0,0,0,3,1,4],
-			[4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4], 
+			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+			[0,1,1,1,5,1,1,5,1,1,1,1,1,5,1,1,0],
+			[0,1,3,0,0,0,0,0,0,0,0,0,0,0,3,1,0],
+			[0,1,0,1,1,0,1,0,1,1,1,0,1,1,0,1,0],
+			[0,1,0,1,3,0,1,3,5,0,1,0,3,1,0,1,0],
+			[0,1,0,0,0,1,1,1,1,0,1,0,5,5,0,1,0],
+			[0,1,0,0,0,0,1,0,2,0,0,0,0,0,0,1,0],
+			[0,1,0,1,3,0,0,0,0,1,0,0,3,0,0,1,0],
+			[0,1,0,1,5,5,5,0,1,1,0,0,1,5,0,1,0],
+			[0,1,3,0,0,0,0,0,3,1,0,5,0,0,3,1,0],
+			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0], 
 			[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
 			[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
 		];
@@ -46,6 +46,8 @@ var stage1State = {
 		this.grass.enableBody = true;
 		this.blocks = game.add.group();
 		this.blocks.enableBody = true;
+		this.houses = game.add.group();
+		this.houses.enableBody = true;
 	
 		this.coinPositions = [];
 		
@@ -82,20 +84,22 @@ var stage1State = {
 					
 				}
 				if(tile === 5){
-					var block = this.blocks.create(x,y,'block');
-					block.body.immovable = true;
+					var house = this.houses.create(x,y,'house');
+					house.body.immovable = true;
+					
 					
 				}
 			}
 		}
 		//carrega titulo da tela
-		var txtTitulo = game.add.text(game.world.centerX, 15, 'MAPA', { font: '20px emulogic', fill: '#fff' });
-		txtTitulo.anchor.set(0.5, 0);
+		var txtTitulo = game.add.text(game.world.centerX, 600, 'MAPA', { font: '20px emulogic', fill: '#fff' });
+		txtTitulo.anchor.set(0.5, 0.5);
 
 		
 		
 		var button;
-		button = game.add.button(50, 580, 'btn_cards', this.keyA, this, 2, 1, 0);
+		button = game.add.button(50, 600, 'btn_cards', this.keyA, this, 2, 1, 0);
+		button.anchor.set(0,0.5);
 	
 		
 		
@@ -127,15 +131,24 @@ var stage1State = {
 		this.monsters = game.global.monsters;
 
 		this.txtMonsters = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
-		this.txtMonsters.anchor.set(1,0);
+		this.txtMonsters.anchor.set(1,0.5);
 	},
 	
 	update: function(){
 		if(this.onGame){
 			game.physics.arcade.collide(this.player,this.blocks);
+			game.physics.arcade.collide(this.player,this.houses);
+
 			game.physics.arcade.overlap(this.player,this.coin,this.getCoin,null,this);
-			game.physics.arcade.overlap(this.player,this.enemy,this.loseCoin,null,this);
-		
+			//game.physics.arcade.overlap(this.player,this.enemy,this.keyA,null,this);
+
+			//console.log("Player X: "+this.player.position.x);
+			//console.log("Player y: "+this.player.position.y);
+			this.player.body.collideWorldBounds = true;
+
+			
+			game.physics.arcade.overlap(this.player,this.houses,this.keyA,null,this);
+
 			this.movePlayer();
 		}
 	},

@@ -22,17 +22,17 @@ var loadState = {
 
 
 		game.load.spritesheet('button', 'img/button_sprite_sheet.png', 193, 71);
-		game.load.spritesheet('btn_mapa', 'buttons/btn_mapa.png', 250, 100);
-		game.load.spritesheet('btn_cards', 'buttons/btn_cards.png', 250, 100);
-		game.load.spritesheet('btn_sound', 'buttons/btn_sound.png', 250, 100);
+		game.load.spritesheet('btn_mapa', 'buttons/btn_mapa.png');
+		game.load.spritesheet('btn_cards', 'buttons/btn_cards.png');
+		game.load.spritesheet('btn_sound', 'buttons/btn_sound.png');
 
 
 
-		game.load.spritesheet('btn_papel', 'buttons/PAPEL-peq.png', 110, 128);
-		game.load.spritesheet('btn_papel1', 'buttons/btn_papel.png', 110, 128);
-		game.load.spritesheet('btn_pedra1', 'buttons/btn_pedra.png', 110, 128);
-		game.load.spritesheet('btn_tesoura1', 'buttons/btn_tesoura.png', 110, 128);
-		game.load.spritesheet('btn_hadouken1', 'buttons/btn_hadouken.png', 110, 128);
+		game.load.spritesheet('btn_papel', 'buttons/PAPEL-peq.png');
+		game.load.spritesheet('btn_papel1', 'buttons/btn_papel.png');
+		game.load.spritesheet('btn_pedra1', 'buttons/btn_pedra.png');
+		game.load.spritesheet('btn_tesoura1', 'buttons/btn_tesoura.png');
+		game.load.spritesheet('btn_hadouken1', 'buttons/btn_hadouken.png');
 
 
 
@@ -46,6 +46,7 @@ var loadState = {
 
 
 		game.load.image('block','img/block.png');
+		
 
 		game.load.image('grass','img/grass.png');
 		game.load.image('house','img/house.png');

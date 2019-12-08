@@ -12,10 +12,6 @@ var battleState = {
 		this.blocks.enableBody = true;
 
 		for(var i = 0; i<17;i++){
-			var block = this.blocks.create(i*50,1,'block');
-			block.body.immovable = true;
-		}
-		for(var i = 0; i<17;i++){
 			var block = this.blocks.create(i*50,50*12,'block');
 			block.body.immovable = true;
 		}
@@ -23,20 +19,12 @@ var battleState = {
 			var block = this.blocks.create(i*50,50*11,'block');
 			block.body.immovable = true;
 		}
-		for(var i = 0; i<12;i++){
-			var block = this.blocks.create(0,50*i,'block');
-			block.body.immovable = true;
-		}
-		for(var i = 0; i<12;i++){
-			console.log(i);
-			var block = this.blocks.create(50*16, 50*i,'block');
-			block.body.immovable = true;
-		}
-		var txtTitulo = game.add.text(game.world.centerX, 15, 'JOKEMPO', { font: '20px emulogic', fill: '#fff' });
-		txtTitulo.anchor.set(0.5, 0);
+
+		var txtTitulo = game.add.text(game.world.centerX, 600, 'JOKEMPO', { font: '20px emulogic', fill: '#fff' });
+		txtTitulo.anchor.set(0.5, 0.5);
 		
 		this.txtMonsters = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
-		this.txtMonsters.anchor.set(1,0);
+		this.txtMonsters.anchor.set(1,0.5);
 		
 		
 		var button;
@@ -260,8 +248,8 @@ var battleState = {
 	},
 
 	finalBatalha: function(texto){
-		this.txt = game.add.text(game.world.centerX,600,texto,{font:'15px emulogic',fill:'#fff'});
-		this.txt.anchor.set(.5);
+		this.txt = game.add.text(50,600,texto,{font:'15px emulogic',fill:'#fff'});
+		this.txt.anchor.set(0,.5);
 		this.txt.alpha = 0;
 		//em 0,5s começa a aparecer o texto piscante "PERDEU" no topo da tela 
 		//jogador pode apertar a tecla enter e retornar para o jogo
