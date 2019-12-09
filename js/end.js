@@ -12,10 +12,7 @@ var endState = {
 		this.blocks = game.add.group();
 		this.blocks.enableBody = true;
 
-		for(var i = 0; i<17;i++){
-			var block = this.blocks.create(i*50,1,'block');
-			block.body.immovable = true;
-		}
+		
 		for(var i = 0; i<17;i++){
 			var block = this.blocks.create(i*50,50*12,'block');
 			block.body.immovable = true;
@@ -24,16 +21,12 @@ var endState = {
 			var block = this.blocks.create(i*50,50*11,'block');
 			block.body.immovable = true;
 		}
-		for(var i = 0; i<12;i++){
-			var block = this.blocks.create(0,50*i,'block');
-			block.body.immovable = true;
-		}
-		for(var i = 0; i<12;i++){
-			console.log(i);
-			var block = this.blocks.create(50*16, 50*i,'block');
-			block.body.immovable = true;
-		}
-		var txtTitulo = game.add.text(15, 15, 'THE END', { font: '20px emulogic', fill: '#fff' });
+		
+		
+		//carrega titulo da tela
+		var txtTitulo = game.add.text(game.world.centerX, 600, 'FIM', { font: '20px emulogic', fill: '#fff' });
+		txtTitulo.anchor.set(0.5, 0.5);	
+		
 	
 		var all = game.add.sprite(game.world.centerX,game.world.centerY,'all');
 		all.anchor.set(0.5);

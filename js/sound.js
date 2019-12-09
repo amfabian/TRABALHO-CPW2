@@ -28,7 +28,11 @@ var soundState = {
 	
 		//carrega titulo da tela
 		var txtTitulo = game.add.text(game.world.centerX, 600, 'SOUND TEST', { font: '20px emulogic', fill: '#fff' });
-		txtTitulo.anchor.set(0.5, 0.5);		
+		txtTitulo.anchor.set(0.5, 0.5);	
+		
+		var button;
+		button = game.add.button(50, 600, 'btn_cards', this.keyA, this, 2, 1, 0);
+		button.anchor.set(0,0.5);
 		
 		var button_music_1;
 		button_music_1 = game.add.button(100, 50, 'btn_music_menu', this.actionOnClick_music_1, this, 1, 2, 0);
@@ -157,7 +161,13 @@ var soundState = {
 		this.music.stop();
 
 		game.state.start('stage1');
-	}
-
+	},
 	
+	keyA: function () { // ACESSA OS CARDs
+	
+		this.music.stop();
+
+		console.log("PREMIDO BOTAO A")
+		game.state.start('card');
+		},
 };
