@@ -12,10 +12,6 @@ var soundState = {
 		this.blocks.enableBody = true;
 
 		for(var i = 0; i<17;i++){
-			var block = this.blocks.create(i*50,1,'block');
-			block.body.immovable = true;
-		}
-		for(var i = 0; i<17;i++){
 			var block = this.blocks.create(i*50,50*12,'block');
 			block.body.immovable = true;
 		}
@@ -23,31 +19,28 @@ var soundState = {
 			var block = this.blocks.create(i*50,50*11,'block');
 			block.body.immovable = true;
 		}
-		for(var i = 0; i<12;i++){
-			var block = this.blocks.create(0,50*i,'block');
-			block.body.immovable = true;
-		}
-		for(var i = 0; i<12;i++){
-			console.log(i);
-			var block = this.blocks.create(50*16, 50*i,'block');
-			block.body.immovable = true;
-		}
 		var txtTitulo = game.add.text(15, 15, 'SOUND TEST', { font: '20px emulogic', fill: '#fff' });
 		
 		
-		var button;
+		var button_music_1;
+		button_music_1 = game.add.button(game.world.centerX-300, 150, 'btn_papel1', this.actionOnClick_music_1, this, 1, 2, 0);
+		button_music_1.anchor.set(0.5, 0);
+		var button_music_2;
+		button_music_2 = game.add.button(game.world.centerX, 150, 'btn_pedra1', this.actionOnClick_music_2, this, 1, 2, 0);
+		button_music_2.anchor.set(0.5, 0);
+		var button_music_3;
+		button_music_3 = game.add.button(game.world.centerX+300, 150, 'btn_tesoura1', this.actionOnClick_music_3, this, 1, 2, 0);
+		button_music_3.anchor.set(0.5, 0);
 		
-		button = game.add.button(game.world.centerX, 580, 'btn_papel1', this.actionOnClick_papel, this, 1, 2, 0);
-		button.anchor.set(0.5, 0);
-		
-		var button_pedra;
-		button_pedra = game.add.button(game.world.centerX-300, 580, 'btn_pedra1', this.actionOnClick_pedra, this, 1, 2, 0);
-		button_pedra.anchor.set(0.5, 0);
-		
-		
-		var button_tesoura;
-		button_tesoura = game.add.button(game.world.centerX+300, 580, 'btn_tesoura1', this.actionOnClick_tesoura, this, 1, 2, 0);
-		button_tesoura.anchor.set(0.5, 0);
+		var button_music_4;
+		button_music_4 = game.add.button(game.world.centerX-300, 350, 'btn_papel1', this.actionOnClick_music_4, this, 1, 2, 0);
+		button_music_4.anchor.set(0.5, 0);
+		var button_music_5;
+		button_music_5 = game.add.button(game.world.centerX, 350, 'btn_pedra1', this.actionOnClick_music_5, this, 1, 2, 0);
+		button_music_5.anchor.set(0.5, 0);
+		var button_music_6;
+		button_music_6 = game.add.button(game.world.centerX+300, 350, 'btn_tesoura1', this.actionOnClick_music_6, this, 1, 2, 0);
+		button_music_6.anchor.set(0.5, 0);
 		
 		
 
@@ -92,29 +85,19 @@ var soundState = {
 
 	
 
-	actionOnClick_papel: function (button) {
+	actionOnClick_music_1: function (button) {
 
 		console.log("BOTAO PAPEL PREMIDO");
 		this.music.stop();
-		this.music = game.add.audio('angelbeats1');
+		this.music = game.add.audio('menu');
 		this.music.volume = .2;
 		this.music.play();
 
 
 	},
-	actionOnClick_pedra: function (button) {
+	actionOnClick_music_2: function (button) {
 
 		console.log("BOTAO PEDRA PREMIDO");
-		this.music.stop();
-		this.music = game.add.audio('clannad');
-		this.music.volume = .2;
-		this.music.play();
-
-	},
-	
-	actionOnClick_tesoura: function (button) {
-
-		console.log("BOTAO TESOURA PREMIDO");
 		this.music.stop();
 		this.music = game.add.audio('clannad_nagisa');
 		this.music.volume = .2;
@@ -122,15 +105,45 @@ var soundState = {
 
 	},
 	
-	actionOnClick_hadouken: function (button) {
+	actionOnClick_music_3: function (button) {
 
-		console.log("BOTAO HADOUKEN PREMIDO");
-		this.ganhou();
-
-		
-
+		console.log("BOTAO TESOURA PREMIDO");
+		this.music.stop();
+		this.music = game.add.audio('battle');
+		this.music.volume = .2;
+		this.music.play();
 
 	},
+
+	actionOnClick_music_4: function (button) {
+
+		console.log("BOTAO TESOURA PREMIDO");
+		this.music.stop();
+		this.music = game.add.audio('angelbeats1');
+		this.music.volume = .2;
+		this.music.play();
+
+	},
+	actionOnClick_music_5: function (button) {
+
+		console.log("BOTAO TESOURA PREMIDO");
+		this.music.stop();
+		this.music = game.add.audio('clannad');
+		this.music.volume = .2;
+		this.music.play();
+
+	},
+	actionOnClick_music_6: function (button) {
+
+		console.log("BOTAO TESOURA PREMIDO");
+		this.music.stop();
+		this.music = game.add.audio('angelbeats2');
+		this.music.volume = .2;
+		this.music.play();
+
+	},
+
+
 
 	back: function(){
 		this.music.stop();

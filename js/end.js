@@ -42,9 +42,8 @@ var endState = {
 
 		var button;
 		
-		button = game.add.button(game.world.centerX-300, 580, 'btn_sound', this.keyS, this, 2, 1, 0);
-		//button.anchor.set(0.5);
-
+		button = game.add.button(50, 600, 'btn_sound', this.keyS, this, 2, 1, 0);
+		button.anchor.set(0,0.5);
 		
 		
 		var txtPressStart = game.add.text(game.world.centerX,100,'APERTE ENTER',{font:'20px emulogic',fill:'#f00'});
@@ -59,6 +58,15 @@ var endState = {
 		},this);
 	},
 	
+
+	keyS: function () {
+		
+		console.log("PREMIDO BOTAO S");
+		this.music.stop();
+
+		game.state.start('sound');
+	},
+
 	backToMenu: function(){
 		this.music.stop();
 		game.state.start('menu');
