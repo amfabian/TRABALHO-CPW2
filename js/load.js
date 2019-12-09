@@ -53,7 +53,7 @@ var loadState = {
 		game.load.image('all','img/all.jpeg');
 		game.load.image('part','img/part.png');
 		
-		game.load.spritesheet('coin','img/coin.png',32,32);
+		game.load.spritesheet('coin','img/part.png',32,32);
 		game.load.spritesheet('enemy','img/enemy.png',24,40);
 		game.load.spritesheet('player','img/player.png',24,32);
 		

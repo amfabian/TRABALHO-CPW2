@@ -114,7 +114,7 @@ var stage1State = {
 		this.card.position = this.newPosition();
 		this.card = game.add.sprite(this.card.position.x,this.card.position.y,'coin');
 		this.card.anchor.set(.5);
-		this.card.animations.add('spin',[0,1,2,3,4,5,6,7,8,9],10,true).play();
+		//this.card.animations.add('spin',[0,1,2,3,4,5,6,7,8,9],10,true).play();
 		//this.card.animations.add('spin',[10],10,true).play();
 
 		game.physics.arcade.enable(this.card);
@@ -158,7 +158,7 @@ var stage1State = {
 	
 
 	getCard: function(){
-		this.music.stop();
+		//this.music.stop();
 		game.global.xPlayer = this.player.position.x;
 		game.global.yPlayer = this.player.position.y;
 		
@@ -185,11 +185,17 @@ var stage1State = {
 		
 
 		
-		this.emitter.x = this.card.position.x;
-		this.emitter.y = this.card.position.y;
+		this.emitter.x = this.player.position.x;
+		this.emitter.y = this.player.position.y;
 		this.emitter.start(true,500,null,15);
 		console.log("tempo");
-		game.time.events.add(5000,this.keyD(), this);
+
+	//	game.time.events.add(5000,this.keyD(), this);
+		game.time.events.add(1000,function(){
+			this.music.stop();
+			game.state.start('battle');
+			
+		},this);
 
 		
 	
