@@ -25,27 +25,29 @@ var soundState = {
 			var block = this.blocks.create(i*50,50*11,'block');
 			block.body.immovable = true;
 		}
-		var txtTitulo = game.add.text(15, 15, 'SOUND TEST', { font: '20px emulogic', fill: '#fff' });
-		
+	
+		//carrega titulo da tela
+		var txtTitulo = game.add.text(game.world.centerX, 600, 'SOUND TEST', { font: '20px emulogic', fill: '#fff' });
+		txtTitulo.anchor.set(0.5, 0.5);		
 		
 		var button_music_1;
-		button_music_1 = game.add.button(game.world.centerX-300, 150, 'btn_music_menu', this.actionOnClick_music_1, this, 1, 2, 0);
+		button_music_1 = game.add.button(100, 50, 'btn_music_menu', this.actionOnClick_music_1, this, 1, 2, 0);
 		button_music_1.anchor.set(0.5, 0);
 		var button_music_2;
-		button_music_2 = game.add.button(game.world.centerX, 150, 'btn_music_mapa', this.actionOnClick_music_2, this, 1, 2, 0);
+		button_music_2 = game.add.button(580, 50, 'btn_music_mapa', this.actionOnClick_music_2, this, 1, 2, 0);
 		button_music_2.anchor.set(0.5, 0);
 		var button_music_3;
-		button_music_3 = game.add.button(game.world.centerX+300, 150, 'btn_music_battle', this.actionOnClick_music_3, this, 1, 2, 0);
+		button_music_3 = game.add.button(120, 250, 'btn_music_battle', this.actionOnClick_music_3, this, 1, 2, 0);
 		button_music_3.anchor.set(0.5, 0);
 		
 		var button_music_4;
-		button_music_4 = game.add.button(game.world.centerX-300, 350, 'btn_music_cards', this.actionOnClick_music_4, this, 1, 2, 0);
+		button_music_4 = game.add.button(100, 480, 'btn_music_cards', this.actionOnClick_music_4, this, 1, 2, 0);
 		button_music_4.anchor.set(0.5, 0);
 		var button_music_5;
-		button_music_5 = game.add.button(game.world.centerX, 350, 'btn_music_fim', this.actionOnClick_music_5, this, 1, 2, 0);
+		button_music_5 = game.add.button(game.world.centerX, game.world.centerY-100, 'btn_music_fim', this.actionOnClick_music_5, this, 1, 2, 0);
 		button_music_5.anchor.set(0.5, 0);
 		var button_music_6;
-		button_music_6 = game.add.button(game.world.centerX+300, 350, 'btn_music_sound', this.actionOnClick_music_6, this, 1, 2, 0);
+		button_music_6 = game.add.button(game.world.centerX-80, 410, 'btn_music_sound', this.actionOnClick_music_6, this, 1, 2, 0);
 		button_music_6.anchor.set(0.5, 0);
 		
 		

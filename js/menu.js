@@ -44,6 +44,6 @@ var menuState = {
 	
 	startGame: function(){
 		this.music.stop();
-		game.state.start('stage1');
+		game.state.start('sound');
 	}
 };
