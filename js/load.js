@@ -11,6 +11,8 @@ var loadState = {
 		game.load.image('bg','img/bg.png');
 		game.load.image('bgVERDE','img/bgVERDE.png');
 		game.load.image('bg_battle','img/bg_battle.png');
+		game.load.image('bg_sound','img/bg_sound.png');
+
 		game.load.image('bg_verde','img/bg_verde.jpg');
 
 
@@ -48,6 +50,13 @@ var loadState = {
 		game.load.spritesheet('btn_pedra', 'buttons/PEDRA-peq.png', 110, 128);
 		game.load.spritesheet('btn_tesoura', 'buttons/TESOURA-peq.png', 110, 128);
 		game.load.spritesheet('btn_hadouken', 'buttons/HADOUKEN-peq.png', 110, 128);
+		game.load.image('btn_music_menu', 'buttons/btn_music_menu.png');
+		game.load.image('btn_music_mapa', 'buttons/btn_music_mapa.png');
+		game.load.image('btn_music_battle', 'buttons/btn_music_battle.png');
+		game.load.image('btn_music_cards', 'buttons/btn_music_cards.png');
+		game.load.image('btn_music_fim', 'buttons/btn_music_fim.png');
+		game.load.image('btn_music_sound', 'buttons/btn_music_sound.png');
+
 
 
 
@@ -70,7 +79,6 @@ var loadState = {
 		game.load.audio('getitem','sfx/getitem.ogg');
 
 		game.load.audio('battle','sfx/chrono-trigger-chronos-theme.mp3');
-
 		game.load.audio('menu','sfx/600ad-yearnings-of-wind.mp3');
 		game.load.audio('clannad','sfx/clannad-soundtrack_town_flowoftime_people.mp3');
 		game.load.audio('clannad_nagisa','sfx/clannad_soundtrack_track5_nagisa.mp3');
