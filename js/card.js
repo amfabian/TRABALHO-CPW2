@@ -61,7 +61,7 @@ var cardState = {
 		game.cards.forEach(function (item, indice, array) {
 			console.log("ITEM: "+ item, indice);
 			game.add.sprite(vetorX[indice], vetorY[indice], item);
-			var txtpok = game.add.text(vetorX[indice], vetorY[indice]+160, item,{ font: '15px emulogic', fill: '#fff' });
+			var txtpok = game.add.text(vetorX[indice], vetorY[indice]+160, item,{ font: '11px emulogic', fill: '#fff' });
 
 		
 

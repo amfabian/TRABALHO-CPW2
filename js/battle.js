@@ -55,6 +55,8 @@ var battleState = {
 
 
 		game.add.sprite(game.world.centerX,180, game.global.wild_appeared).anchor.set(.5);
+		var txtpok = game.add.text(game.world.centerX, 280, game.global.wild_appeared,{ font: '15px emulogic', fill: '#fff' }).anchor.set(.5);
+
 
 
 		
@@ -268,18 +270,24 @@ var battleState = {
 	},
 	
 	maq: function(num){
-
+		console.log("maquina");
 		var img_maquina;
 
 		if(num === 0){
+			console.log("maquina: PEDRA");
+
 			img_maquina = game.add.button(game.world.centerX+150, 180, 'btn_pedra', this.actionOnClick_hadouken, this, 1, 2, 0);
 
 
 		} if (num === 1){
+			console.log("maquina: TESOURA");
+
 			img_maquina = game.add.button(game.world.centerX+150, 180, 'btn_tesoura', this.actionOnClick_hadouken, this, 1, 2, 0);
 
 
 		} if (num === 2){
+			console.log("maquina: PAPEL");
+
 			img_maquina = game.add.button(game.world.centerX+150, 180, 'btn_papel', this.actionOnClick_hadouken, this, 1, 2, 0);
 
 

@@ -14,11 +14,21 @@ var loadState = {
 		game.load.image('bg_verde','img/bg_verde.jpg');
 
 
-		game.load.image('pok1','cards/pokemon1s.jpg');
-		game.load.image('pok2','cards/pokemon2s.jpg');
-		game.load.image('pok3','cards/pokemon3s.jpg');
-		game.load.image('pok4','cards/pokemon4s.jpg');
-		game.load.image('togepi','cards/togepiS.jpg');
+		game.load.image('Pikachu','cards/Pikachu.jpg');
+		game.load.image('Charmander','cards/Charmander.jpg');
+		game.load.image('Bulbassauro','cards/Bulbassauro.jpg');
+		game.load.image('Squirtle','cards/Squirtle.jpg');
+		game.load.image('Togepi','cards/Togepi.jpg');
+		game.load.image('Pichu','cards/Pichu.jpg');
+		game.load.image('Raichu','cards/Raichu.jpg');
+		game.load.image('Charizard','cards/Charizard.jpg');
+		game.load.image('Butterfree','cards/Butterfree.jpg');
+		game.load.image('Caterpie','cards/Caterpie.jpg');
+		game.load.image('Jigglypuff','cards/Jigglypuff.jpg');
+		game.load.image('Agumon','cards/Agumon.jpg');
+		game.load.image('Angewomon','cards/Angewomon.jpg');
+		game.load.image('Uno','cards/Uno.png');
+
 
 
 		game.load.spritesheet('button', 'img/button_sprite_sheet.png', 193, 71);

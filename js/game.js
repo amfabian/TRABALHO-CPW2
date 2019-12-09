@@ -11,7 +11,7 @@ var game = new Phaser.Game(850,650,Phaser.CANVAS);
 
 	game.cards = []; //vetor de cartas em char TROCAR DE NOME
 
-	game.monsters = ['pok1', 'pok2', 'pok3', 'pok4', 'togepi'];
+	game.monsters = ['Pikachu', 'Raichu', 'Charmander', 'Squirtle', 'Bulbassauro','Agumon','Angewomon','Jigglypuff','Uno', 'Togepi'];
 
 	game.state.add('boot',bootState);
 	game.state.add('battle',battleState);
