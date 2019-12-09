@@ -7,7 +7,7 @@ var menuState = {
 		
 		game.global.score = 0;
 		
-		//PERSISTENCIA NAO ESTA DANDO
+		//PERSISTENCIA NAO ESTA DANDO CERTO!
 		/*
 		if(!localStorage.getItem('jokempo_monsters')){
 			console.log("passou");
@@ -44,6 +44,6 @@ var menuState = {
 	
 	startGame: function(){
 		this.music.stop();
-		game.state.start('sound');
+		game.state.start('stage1');
 	}
 };
