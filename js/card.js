@@ -20,7 +20,7 @@ var cardState = {
 			var block = this.blocks.create(i*50,50*11,'block');
 			block.body.immovable = true;
 		}
-		//texto de nome de tela e quantidade de cards capturados padrao nas telas MApa, card e battle.
+		//texto do titulo da tela e quantidade de cards capturados padrao nas telas MApa, card e battle.
 		var txtTitulo = game.add.text(game.world.centerX, 590, 'CARDS', { font: '20px emulogic', fill: '#fff' });
 		txtTitulo.anchor.set(0.5, 0);
 		this.txtCards = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
