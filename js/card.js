@@ -21,8 +21,8 @@ var cardState = {
 			block.body.immovable = true;
 		}
 		//texto do titulo da tela e quantidade de cards capturados padrao nas telas MApa, card e battle.
-		var txtTitulo = game.add.text(game.world.centerX, 590, 'CARDS', { font: '20px emulogic', fill: '#fff' });
-		txtTitulo.anchor.set(0.5, 0);
+		var txtTitulo = game.add.text(game.world.centerX, 600, 'CARDS', { font: '20px emulogic', fill: '#fff' });
+		txtTitulo.anchor.set(0.5, 0.5);
 		this.txtCards = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
 		this.txtCards.anchor.set(1,0.5);
 		//Botao para retornar para o mapa
@@ -53,15 +53,15 @@ var cardState = {
 
 	//alterna para a tela de mapa
 	keyS: function () {
+		//pausa a musica e chama o estado a ser executado
 		this.music.stop();
-		console.log("PREMIDO BOTAO S")
 		game.state.start('stage1');
 	},
 
 	//alterna para a tela de batalha
 	keyD: function () {
+		//pausa a musica e chama o estado a ser executado
 		this.music.stop();
-		console.log("PREMIDO BOTAO D")
 		game.state.start('battle');
 	},
 
