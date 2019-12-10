@@ -272,7 +272,7 @@ var stage1State = {
 		console.log("PREMIDO BOTAO S");
 		this.music.stop();
 
-		game.state.start('end');
+		game.state.start('sound');
 	},
 
 	keyD: function () {
