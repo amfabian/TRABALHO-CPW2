@@ -2,8 +2,8 @@ var loadState = {
 	preload: function(){
 		var txtLoading = game.add.text(game.world.centerX,150,'LOADING...',{font:'15px emulogic',fill:'#fff'});
 			txtLoading.anchor.set(.5);
-		//Barra de progresso
 
+			//Barra de progresso
 		var progressBar = game.add.sprite(game.world.centerX,250,'progressBar');
 			progressBar.anchor.set(.5);
 		game.load.setPreloadSprite(progressBar);
@@ -32,23 +32,21 @@ var loadState = {
 		game.load.image('Uno','cards/Uno.png');
 
 
-
-		//game.load.spritesheet('button', 'img/button_sprite_sheet.png', 193, 71);
-
-		//CARREGA BOTOES
+		//CARREGA BOTOES - para alternar entre telas do jogo
 		game.load.spritesheet('btn_mapa', 'buttons/btn_mapa.png');
 		game.load.spritesheet('btn_cards', 'buttons/btn_cards.png');
 		game.load.spritesheet('btn_sound', 'buttons/btn_sound.png');
-
+		//botoes para a tela de batalha - somente desenho
 		game.load.spritesheet('btn_papel1', 'buttons/btn_papel.png');
 		game.load.spritesheet('btn_pedra1', 'buttons/btn_pedra.png');
 		game.load.spritesheet('btn_tesoura1', 'buttons/btn_tesoura.png');
 		game.load.spritesheet('btn_hadouken1', 'buttons/btn_hadouken.png');
-
+		//botoes para a tela de batalha - somente texto
 		game.load.spritesheet('btn_papel', 'buttons/PAPEL-peq.png', 110, 128);
 		game.load.spritesheet('btn_pedra', 'buttons/PEDRA-peq.png', 110, 128);
 		game.load.spritesheet('btn_tesoura', 'buttons/TESOURA-peq.png', 110, 128);
 		game.load.spritesheet('btn_hadouken', 'buttons/HADOUKEN-peq.png', 110, 128);
+		//botoes para sound test
 		game.load.image('btn_music_menu', 'buttons/btn_music_menu.png');
 		game.load.image('btn_music_mapa', 'buttons/btn_music_mapa.png');
 		game.load.image('btn_music_battle', 'buttons/btn_music_battle.png');
@@ -56,11 +54,6 @@ var loadState = {
 		game.load.image('btn_music_fim', 'buttons/btn_music_fim.png');
 		game.load.image('btn_music_sound', 'buttons/btn_music_sound.png');
 		//-------------------------------FIM
-
-
-
-
-    	
 
 		//CARREGA IMAGENS DO CENARIO
 		game.load.image('block','img/block.png');
@@ -71,11 +64,9 @@ var loadState = {
 		
 		//CARREGA SPRITES
 		game.load.spritesheet('coin','img/part.png',32,32);
-	//game.load.spritesheet('enemy','img/enemy.png',24,40);
 		game.load.spritesheet('player','img/player.png',24,32);
 		
 		//CARREGA ARQUIVOS DE AUDIO - MUSICAS 
-
 		game.load.audio('getitem','sfx/getitem.ogg');
 		game.load.audio('battle','sfx/chrono-trigger-chronos-theme.mp3');
 		game.load.audio('menu','sfx/600ad-yearnings-of-wind.mp3');
@@ -83,16 +74,13 @@ var loadState = {
 		game.load.audio('clannad_nagisa','sfx/clannad_soundtrack_track5_nagisa.mp3');
 		game.load.audio('angelbeats2','sfx/mymostprecioustreasure.mp3');
 		game.load.audio('angelbeats1','sfx/themeofsss.mp3');
-	
 		//CARREGA ARQUIVOS DE AUDIO - EFEITOS
 		game.load.audio('win','sfx/win.mp3');
 		game.load.audio('lose','sfx/lose.mp3');
 		game.load.audio('draw','sfx/draw.mp3');
 
 
-	//	game.load.audio('loseitem','sfx/loseitem.ogg');
-	//	game.load.audio('music','sfx/music.ogg');
-		
+		//inicia a fisica utilizada pelo jogo - ARCADE
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 	},
 	
