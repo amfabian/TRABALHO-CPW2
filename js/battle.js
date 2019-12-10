@@ -1,16 +1,15 @@
 var battleState = {
 	create: function () {
-
+		//carrega a musica da tela.
 		this.music = game.add.audio('battle');
 		this.music.volume = .2;
 		this.music.play();
 
-
-		console.log("POKEMON APARECEU NA BATALHA: "+game.global.wild_appeared);
+		//monta o cenário, mais pratico do que utilizando a matriz do mapa. Adiciona o bg e
+		//utiliza os FORs para preencher a parte inferior com blocos
 		game.add.sprite(0, 0, 'bg_battle');
 		this.blocks = game.add.group();
 		this.blocks.enableBody = true;
-
 		for(var i = 0; i<17;i++){
 			var block = this.blocks.create(i*50,50*12,'block');
 			block.body.immovable = true;
@@ -19,84 +18,56 @@ var battleState = {
 			var block = this.blocks.create(i*50,50*11,'block');
 			block.body.immovable = true;
 		}
-
+		//texto do titulo da tela e quantidade de cards capturados padrao nas telas MApa, card e battle.
 		var txtTitulo = game.add.text(game.world.centerX, 600, 'JOKEMPO', { font: '20px emulogic', fill: '#fff' });
 		txtTitulo.anchor.set(0.5, 0.5);
-		
 		this.txtMonsters = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
 		this.txtMonsters.anchor.set(1,0.5);
 		
-		var escolha = -1;
-		console.log("ESCOLHA INICIO: "+escolha);
-		var button;
-		
-		button = game.add.button(game.world.centerX, 480, 'btn_papel1', this.actionOnClick_papel, this, 1, 2, 0);
-		button.anchor.set(0.5, 0);
-		button.onInputOver.add(this.over, this);
-		button.onInputOut.add(this.out, this);
-		button.onInputUp.add(this.up, this);
-
+		//Carrega botao papel
+		var button_papel;
+		button_papel = game.add.button(game.world.centerX, 480, 'btn_papel1', this.actionOnClick_papel, this, 1, 2, 0);
+		button_papel.anchor.set(0.5, 0);
+		//Carrega botao pedra
 		var button_pedra;
 		button_pedra = game.add.button(game.world.centerX-220, 480, 'btn_pedra1', this.actionOnClick_pedra, this, 1, 2, 0);
 		button_pedra.anchor.set(0.5, 0);
-		button_pedra.onInputOver.add(this.over, this);
-		button_pedra.onInputOut.add(this.out, this);
-		button_pedra.onInputUp.add(this.up, this);
-
-		
+		//Carrega botao tesoura
 		var button_tesoura;
 		button_tesoura = game.add.button(game.world.centerX+220, 480, 'btn_tesoura1', this.actionOnClick_tesoura, this, 1, 2, 0);
 		button_tesoura.anchor.set(0.5, 0);
-		button_tesoura.onInputOver.add(this.over, this);
-		button_tesoura.onInputOut.add(this.out, this);
-		button_tesoura.onInputUp.add(this.up, this);
-
 		
-
-
-
+		//ADD Sprite do CARD sorteado para a batalha
 		game.add.sprite(game.world.centerX,180, game.global.wild_appeared).anchor.set(.5);
+		//ADD nome abaixo do card
 		var txtpok = game.add.text(game.world.centerX, 280, game.global.wild_appeared,{ font: '15px emulogic', fill: '#fff' }).anchor.set(.5);
 
-
-
-		
-		//txtPressStart.anchor.set(.5);
-
+		//captura de teclas para alternar entre as telas MAPA e batalaha
 		var enterKeyP = game.input.keyboard.addKey(Phaser.Keyboard.P);
 		var enterKeyO = game.input.keyboard.addKey(Phaser.Keyboard.O);
 		var enterKeyI = game.input.keyboard.addKey(Phaser.Keyboard.I);
 		var enterKeyX = game.input.keyboard.addKey(Phaser.Keyboard.X);
-
-
 		var enterKeyA = game.input.keyboard.addKey(Phaser.Keyboard.A);
 		var enterKeyS = game.input.keyboard.addKey(Phaser.Keyboard.S);
 		enterKeyA.onDown.addOnce(this.keyA, this);
 		enterKeyS.onDown.addOnce(this.keyS, this);
-
-		
-
-
 		enterKeyP.onDown.addOnce(this.keyP, this);
 		enterKeyO.onDown.addOnce(this.keyO, this);
 		enterKeyI.onDown.addOnce(this.keyI, this);
 		enterKeyX.onDown.addOnce(this.keyX, this);
-
-		
 	},
 
-	keyA: function () { // ACESSA OS CARDs
-		game.global.monsters += 77;
-		console.log("PREMIDO BOTAO A")
+	//alterna para a tela de cards
+	keyA: function () { 
+		//pausa a musica e chama o estado a ser executado
 		this.music.stop();
-
 		game.state.start('card');
-		},
+	},
 
+	//alterna para a tela de mapa
 	keyS: function () {
-		console.log("PREMIDO BOTAO S")
+		//pausa a musica e chama o estado a ser executado
 		this.music.stop();
-
 		game.state.start('stage1');
 	},
 
@@ -111,55 +82,43 @@ var battleState = {
 	keyI: function () {
 		this.jokenpo(2);//PAPEL
 	},
-
+	//Função nao documentada.
 	keyX: function () {
-		
+		//ao pressionar a tecla X
+		//um novo botao hadouken surge na tela
+		//apertando ele, é possivel driblar o sorteio randomico
+		//e ganhar diretamente a batalha de jokenpo
 		var button_hadouken;
 		button_hadouken = game.add.button(game.world.centerX, 400, 'btn_hadouken1', this.actionOnClick_hadouken, this, 1, 2, 0);
 		button_hadouken.anchor.set(0.5);
-		button_hadouken.onInputOver.add(this.over, this);
-		button_hadouken.onInputOut.add(this.out, this);
-		button_hadouken.onInputUp.add(this.up, this);
-
 	},
 
-
-
 	jokenpo: function(num){
-
-		console.log('TAMANHO VETOR:' +game.cards.length);
-		//game.cards.unshift('pok2');
-		
 		game.cards.forEach(function (item, indice, array) {
 			console.log(item, indice);
 		  });
-
 		//PEDRA = 0
 		//TESOURA = 1
 		//PAPEL = 2
 
-		//metade da AI do jogo!
-		
+		//metade da AI do jogo esta aqui.
 
 		var escolha = Math.floor(Math.random() * 3);
-		console.log("ESCOLHA: "+escolha);
 		this.maq(escolha);
-		this.music.stop();
+		//pausa a musica antes de executar a musica do resultado
+		this.music.stop(); 
 
-
-
+		//Logica para decidir o resultado do jokempo
+		//EMPATE
 		if((num === 0 && escolha === 0)  || (num === 1 && escolha === 1) || (num === 2 && escolha === 2)){
-			//empatar
 			this.empatou();			
 		}
-
+		//VITORIA
 		if((num === 0 && escolha === 1)  || (num === 1 && escolha === 2) || (num === 2 && escolha === 0)){
-			//ganhar
 			this.ganhou();
 		}
-
+		//DERROTA
 		if((num === 0 && escolha === 2)  || (num === 1 && escolha === 0) || (num === 2 && escolha === 1)){
-			//perdeu jokempo
 			this.perdeu();
 		}
 	},
@@ -181,15 +140,8 @@ var battleState = {
 		console.log('button out');
 	},
 
-	
-
-
 	//Ação para quando os botões PEDRA/PAPEL/TESOURA sao pressionados
 	actionOnClick_papel: function (button) {
-		console.log("BOTAO PAPEL PREMIDO");
-		console.log("wild: "+game.global.wild_appeared);
-		console.log("sorteado: "+game.monsters[game.global.sorteado]);
-
 		//Lógica serve para os botões somente funcionarem quando pressionados uma unica vez
 		//se retirado o if, jogador pode pressionar diversas vezes os botões até que ganhe a partida!
 		//Se aplica aos três actionOnClick
@@ -198,10 +150,6 @@ var battleState = {
 		}
 	},
 	actionOnClick_pedra: function (button) {
-		console.log("BOTAO PEDRA PREMIDO");
-		console.log("wild: "+game.global.wild_appeared);
-		console.log("sorteado: "+game.monsters[game.global.sorteado]);
-		
 		if(game.global.wild_appeared == game.monsters[game.global.sorteado]) {
 			this.jokenpo(0);//PEDRA
 		}
@@ -210,9 +158,6 @@ var battleState = {
 	},
 	
 	actionOnClick_tesoura: function (button) {
-		console.log("BOTAO TESOURA PREMIDO");
-		console.log("wild: "+game.global.wild_appeared);
-		console.log("sorteado: "+game.monsters[game.global.sorteado]);
 		if(game.global.wild_appeared == game.monsters[game.global.sorteado]) {
 		this.jokenpo(1);//TESOURA
 		}
@@ -221,13 +166,12 @@ var battleState = {
 	
 	actionOnClick_hadouken: function (button) {
 		//CHEAT do jogo! chama a função ganhou sem fazer o sorteio para escolha da maquina
-		console.log("BOTAO HADOUKEN PREMIDO");
 		this.music.stop();
 		this.ganhou();
 	},
 
 	perdeu: function(){
-		console.log("PERDEU");
+		//toca a musica da derrota
 		this.music = game.add.audio('lose');
 		this.music.volume = .5;
 		this.music.play();
@@ -235,9 +179,8 @@ var battleState = {
 		this.finalBatalha("PERDEU");
 	},
 
-
 	empatou: function(){
-		console.log("EMPATOU");
+		//toca a musica do empate
 		this.music = game.add.audio('draw');
 		this.music.volume = .5;
 		this.music.play();
@@ -245,15 +188,13 @@ var battleState = {
 		this.finalBatalha("EMPATOU");
 	},
 
-	//VITORIA
 	ganhou: function(){
-		console.log("GANHOU");
 		//removendo item sorteado do array.
 		var removedItem = game.monsters.splice(game.global.sorteado, 1); 
 		console.log("ARRAY DEPOIS DA REMOÇAO: " + game.monsters);
 		//insere item sorteado no array CARDS, onde é armazenado os cards capturados.
 		game.cards.unshift(game.global.wild_appeared);
-
+		//toca a musica da vitoria
 		this.music = game.add.audio('win');
 		this.music.volume = .5;
 		this.music.play();
@@ -283,19 +224,15 @@ var battleState = {
 	
 	//Mostra a escolha feita pela maquina, ao lado do card, após o jogador pressionar um dos botoes
 	maq: function(num){
-		console.log("maquina");
+		//carrega a imagem da escolha da maquina ao lado do card.
 		var img_maquina;
-
-		if(num === 0){
-			console.log("maquina: PEDRA");
+		if(num === 0){ //caso tenha escolhido PEDRA
 			img_maquina = game.add.button(game.world.centerX+150, 180, 'btn_pedra', this.actionOnClick_hadouken, this, 1, 2, 0);
 		} 
-		if (num === 1){
-			console.log("maquina: TESOURA");
+		if (num === 1){ //caso tenha escolhido TESOURA
 			img_maquina = game.add.button(game.world.centerX+150, 180, 'btn_tesoura', this.actionOnClick_hadouken, this, 1, 2, 0);
 		} 
-		if (num === 2){
-			console.log("maquina: PAPEL");
+		if (num === 2){ //caso tenha escolhido PAPEL
 			img_maquina = game.add.button(game.world.centerX+150, 180, 'btn_papel', this.actionOnClick_hadouken, this, 1, 2, 0);
 		}
 		img_maquina.anchor.set(0.5);
@@ -303,17 +240,19 @@ var battleState = {
 
 //função fim, retorna para o jogo, quando chamada ou, caso o jogador tenha completado as cards caputradas, vai para a tela de fim de jogo
 	fim: function(){
+		//pausa a musica
 		this.music.stop();
+
+		//Logica de fim de jogo
+		//caso o vetor game.monsters esteja vazio.
+		//encerra o jogo, pois não existe mais nada a capturar
 		if(game.monsters.length === 0) {
 			//FINALIZADO
 			game.state.start('end');
 			console.log("FINALIZADO!!!!!!");
-			
-
 		} else {
 		game.state.start('stage1');
 		}
 	}
-
 	
 };
