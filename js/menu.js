@@ -5,7 +5,7 @@ var menuState = {
 		this.music.volume = .1;
 		this.music.play();
 		
-		game.global.score = 0;
+		//game.global.score = 0;
 		
 		//PERSISTENCIA NAO ESTA DANDO CERTO!
 		/*
@@ -21,13 +21,13 @@ var menuState = {
 		}
 		*/
 		
-		var txtHighScore = game.add.text(game.world.centerX,350,'CARDS CAPTURADOS ' + game.cards.length,{font:'20px emulogic',fill:'#D26111'});
-			txtHighScore.anchor.set(.5);
-			txtHighScore.alpha = 0;
+		var txtCards = game.add.text(game.world.centerX,350,'CARDS CAPTURADOS ' + game.cards.length,{font:'20px emulogic',fill:'#D26111'});
+			txtCards.anchor.set(.5);
+			txtCards.alpha = 0;
 		
 	
-		var txtLabirinto = game.add.text(game.world.centerX,150,'J-RPG',{font:'40px emulogic',fill:'#fff'});
-			txtLabirinto.anchor.set(.5);
+		var txtJokenpo = game.add.text(game.world.centerX,150,'Jokenpo',{font:'40px emulogic',fill:'#fff'});
+			txtJokenpo.anchor.set(.5);
 			
 		var txtPressStart = game.add.text(game.world.centerX,550,'APERTE ENTER',{font:'20px emulogic',fill:'#fff'});
 			txtPressStart.anchor.set(.5);
@@ -35,7 +35,7 @@ var menuState = {
 		game.add.tween(txtPressStart).to({y:250},1000).start();
 		
 		game.time.events.add(1000,function(){
-			game.add.tween(txtHighScore).to({alpha:1},500).to({alpha:0},500).loop().start();
+			game.add.tween(txtCards).to({alpha:1},500).to({alpha:0},500).loop().start();
 		
 			var enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 				enterKey.onDown.addOnce(this.startGame,this);

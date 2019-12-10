@@ -136,8 +136,8 @@ var stage1State = {
 		//Monstrosn
 		this.monsters = game.global.monsters;
 
-		this.txtMonsters = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
-		this.txtMonsters.anchor.set(1,0.5);
+		this.txtCards = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
+		this.txtCards.anchor.set(1,0.5);
 	},
 	
 	update: function(){

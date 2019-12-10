@@ -40,8 +40,8 @@ var cardState = {
 		var txtTitulo = game.add.text(game.world.centerX, 590, 'CARDS', { font: '20px emulogic', fill: '#fff' });
 		txtTitulo.anchor.set(0.5, 0);
 
-		this.txtMonsters = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
-		this.txtMonsters.anchor.set(1,0);
+		this.txtCards = game.add.text(game.world.width - 15,600,'CARDS: ' + game.cards.length,{font:'15px emulogic',fill:'#fff'});
+		this.txtCards.anchor.set(1,0.5);
 		var button;
 		
 		button = game.add.button(50, 600, 'btn_mapa', this.keyS, this, 2, 1, 0);

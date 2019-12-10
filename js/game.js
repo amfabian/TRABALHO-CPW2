@@ -1,16 +1,19 @@
 var game = new Phaser.Game(850,650,Phaser.CANVAS);
 
 	game.global = {
-		score: 0,
-		highScore: 0,
+		//score: 0,
+		//highScore: 0,
 		xPlayer: 375,
 		yPlayer: 450,
 		sorteado: 0, //?????? NECESSARIO???
 		wild_appeared: "pok0"
 	};
 
-	game.cards = []; //vetor de cartas em char TROCAR DE NOME
+//vetor de cards já caputadas
+	game.cards = []; 
 
+
+//vetor de cards disponiveis para captura.
 	game.monsters = ['Pikachu', 'Raichu', 'Charmander', 'Squirtle', 'Bulbassauro','Agumon','Angewomon','Jigglypuff','Uno', 'Togepi'];
 
 	game.state.add('boot',bootState);
