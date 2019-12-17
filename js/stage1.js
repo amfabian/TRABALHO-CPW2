@@ -97,13 +97,18 @@ var stage1State = {
 					house.body.immovable = true;
 				}
 				if(tile === 6){
-					//carrega as casas
+					//carrega os buracos
 					var hole = this.hole.create(x,y,'hole');
 					hole.body.immovable = true;
 				}
 
 			}
 		}
+
+		game.physics.arcade.enable(this.hole);
+
+		this.holes=0;
+		
 
 		//texto do titulo da tela e quantidade de cards capturados padrao nas telas MApa, card e battle.
 		var txtTitulo = game.add.text(game.world.centerX, 600, 'MAPA', { font: '20px emulogic', fill: '#fff' });
@@ -145,6 +150,7 @@ var stage1State = {
 	//função do movimento e relação de colisoes do jogo
 	update: function(){
 		if(this.onGame){
+			game.physics.arcade.overlap(this.player,this.hole,this.getHole,null,this);
 			//colisoes entre o player e as casas e blocos
 			game.physics.arcade.collide(this.player,this.blocks);
 			game.physics.arcade.collide(this.player,this.houses);
@@ -156,6 +162,84 @@ var stage1State = {
 		}
 	},
 	
+	getHole: function(){
+		
+		this.holes++;
+		
+		this.map = [ 
+			[0,6,6,6,0,6,6,6,0,6,0,0,6,0,6,6,6],
+			[6,0,0,0,0,6,0,6,0,6,6,6,6,1,6,0,0],
+			[6,0,6,6,1,6,6,6,0,6,0,0,6,1,6,6,0],
+			[6,0,1,6,0,6,0,6,0,6,0,0,6,1,6,0,0],
+			[0,6,6,6,0,6,0,6,0,6,0,0,6,1,6,6,6],
+			[0,1,0,0,0,1,1,1,1,0,1,0,1,1,0,0,0],
+			[0,6,6,6,0,6,1,6,1,6,6,6,0,6,6,1,0],
+			[0,6,0,6,1,6,1,6,0,6,0,0,1,6,0,6,0],
+			[0,6,0,6,1,6,1,6,1,6,6,0,1,6,6,0,0],
+			[0,6,0,6,0,6,0,6,1,6,0,1,0,6,0,6,0],
+			[0,6,6,6,1,1,6,1,1,6,6,6,1,6,1,6,0], 
+			[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
+			[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
+		];
+		this.grass = game.add.group();
+		this.grass.enableBody = true;
+		this.blocks = game.add.group();
+		this.blocks.enableBody = true;
+
+		this.houses = game.add.group();
+		this.houses.enableBody = true;
+
+		this.hole = game.add.group();
+		this.hole.enableBody = true;
+		this.cardPositions = [];
+		//percorre a matriz carregando a grama, os blocos inferiores, as casas, o jogador e o ponto
+		for(var row in this.map){
+			for(var col in this.map[row]){
+				var tile = this.map[row][col];
+				var x = col * 50;
+				var y = row * 50;
+				if(true){
+					//carrega a grama, carregada sob todos os demais itens
+					var grass = this.grass.create(x,y,'grass');
+				} 
+				if(tile === 2){
+					//carrega o player
+					this.player = game.add.sprite(game.global.xPlayer,game.global.yPlayer,'player');
+					game.physics.arcade.enable(this.player);
+					//animações do sprite 
+					this.player.animations.add('goDown',[0,1,2,3,4,5,6,7],12,true);
+					this.player.animations.add('goUp',[8,9,10,11,12,13,14,15],12,true);
+					this.player.animations.add('goLeft',[16,17,18,19,20,21,22,23],12,true);
+					this.player.animations.add('goRight',[24,25,26,27,28,29,30,31],12,true);
+				} 
+				if(tile === 3){ 
+					//carrega o ponto
+					var position = {
+						x: x + 25,
+						y: y + 25
+					};
+					this.cardPositions.push(position);
+				}
+				if(tile === 4){
+					//carrega os blocos, parte inferior do jogo
+					var block = this.blocks.create(x,y,'block');
+					block.body.immovable = true;
+				}
+				if(tile === 5){
+					//carrega as casas
+					var house = this.houses.create(x,y,'house');
+					house.body.immovable = true;
+				}
+				if(tile === 6){
+					//carrega os buracos
+					var hole = this.hole.create(x,y,'hole');
+					hole.body.immovable = true;
+				}
+
+			}
+		}
+
+	},
 	
 
 
