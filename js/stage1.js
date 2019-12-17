@@ -31,17 +31,18 @@ var stage1State = {
 		//3 - Lugares possiveis para aparecer o ponto/particula
 		//4 - BLOCOS
 		//5 - HOUSES
+		//6 - BURACOS
 		this.map = [ 
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 			[0,1,1,1,5,1,1,5,1,1,1,1,1,5,1,1,0],
-			[0,1,3,0,0,0,0,0,0,0,0,0,0,0,3,1,0],
-			[0,1,0,1,1,0,1,0,1,1,1,0,1,1,0,1,0],
+			[0,1,3,0,0,0,0,6,0,6,0,0,0,0,3,1,0],
+			[0,1,0,1,1,0,1,0,1,1,1,0,1,1,0,6,0],
 			[0,1,0,1,3,0,1,3,5,0,1,0,3,1,0,1,0],
 			[0,1,0,0,0,1,1,1,1,0,1,0,5,5,0,1,0],
-			[0,1,0,0,0,0,1,0,2,0,0,0,0,0,0,1,0],
-			[0,1,0,1,3,0,0,0,0,1,0,0,3,0,0,1,0],
+			[0,1,0,0,0,6,1,0,2,0,0,6,0,0,0,1,0],
+			[0,1,0,1,3,0,6,0,0,1,0,0,3,0,0,1,0],
 			[0,1,0,1,5,5,5,0,1,1,0,0,1,5,0,1,0],
-			[0,1,3,0,0,0,0,0,3,1,0,5,0,0,3,1,0],
+			[0,1,3,0,0,6,0,0,3,1,0,5,0,0,3,1,0],
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0], 
 			[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
 			[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
@@ -50,8 +51,12 @@ var stage1State = {
 		this.grass.enableBody = true;
 		this.blocks = game.add.group();
 		this.blocks.enableBody = true;
+
 		this.houses = game.add.group();
 		this.houses.enableBody = true;
+
+		this.hole = game.add.group();
+		this.hole.enableBody = true;
 		this.cardPositions = [];
 		//percorre a matriz carregando a grama, os blocos inferiores, as casas, o jogador e o ponto
 		for(var row in this.map){
@@ -91,6 +96,12 @@ var stage1State = {
 					var house = this.houses.create(x,y,'house');
 					house.body.immovable = true;
 				}
+				if(tile === 6){
+					//carrega as casas
+					var hole = this.hole.create(x,y,'hole');
+					hole.body.immovable = true;
+				}
+
 			}
 		}
 
@@ -145,6 +156,9 @@ var stage1State = {
 		}
 	},
 	
+	
+
+
 	//quadno player e ponto se encontram
 	//função getCard é chamada.
 	getCard: function(){

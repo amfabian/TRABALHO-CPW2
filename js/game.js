@@ -13,7 +13,7 @@ var game = new Phaser.Game(850,650,Phaser.CANVAS);
 	game.cards = []; 
 
 	//vetor de cards disponiveis para captura.
-	game.monsters = ['Pikachu', 'Raichu', 'Charmander', 'Squirtle', 'Bulbassauro','Agumon','Angewomon','Jigglypuff','Uno', 'Togepi'];
+	game.monsters = ['Pikachu', 'Raichu', 'Charmander', 'Squirtle', 'Bulbassauro','Agumon','Angewomon','Jigglypuff','Uno','Togepi'];
 	
 	//adiciona os states ou telas/arquivos do jogo
 	game.state.add('boot',bootState);

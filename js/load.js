@@ -61,6 +61,7 @@ var loadState = {
 		game.load.image('house','img/house.png');
 		game.load.image('all','img/all.jpeg');
 		game.load.image('part','img/part.png');
+		game.load.image('hole','img/hole.png');
 		
 		//CARREGA SPRITES
 		game.load.spritesheet('coin','img/part.png',32,32);
