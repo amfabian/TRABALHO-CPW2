@@ -62,6 +62,7 @@ var loadState = {
 		game.load.image('all','img/all.jpeg');
 		game.load.image('part','img/part.png');
 		game.load.image('hole','img/hole.png');
+		game.load.image('gameover','img/gameover.png');
 		
 		//CARREGA SPRITES
 		game.load.spritesheet('coin','img/part.png',32,32);

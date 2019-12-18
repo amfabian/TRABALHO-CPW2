@@ -17,6 +17,7 @@ var game = new Phaser.Game(850,650,Phaser.CANVAS);
 	
 	//adiciona os states ou telas/arquivos do jogo
 	game.state.add('boot',bootState);
+	game.state.add('gameover',gameoverState);
 	game.state.add('battle',battleState);
 	game.state.add('card',cardState);
 	game.state.add('sound',soundState);
