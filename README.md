@@ -1,4 +1,4 @@
-# TRABALHO-COnstruções de Páginas Web 2
+# TRABALHO-Construções de Páginas Web 2
 ## IFRS - POA
 
 #### Trabalho dividido em diferentes arquivos (em ordem de carregamento):
