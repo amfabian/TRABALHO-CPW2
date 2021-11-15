@@ -1,5 +1,7 @@
-# TRABALHO-Construções de Páginas Web 2
+# TRABALHO - Construções de Páginas Web 2
 ## IFRS - POA
+
+Jogo web feito com phaser.io
 
 #### Trabalho dividido em diferentes arquivos (em ordem de carregamento):
 
